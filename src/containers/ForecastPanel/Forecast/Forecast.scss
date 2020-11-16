@@ -1,0 +1,20 @@
+.forecast {
+  text-align: center;
+  padding: .5em .8em;
+
+  &.active{
+    border: rgb(202, 202, 202) solid 2px;
+  }
+
+  .day {
+    color: rgb(150, 150, 150);
+  }
+  .icons {
+    margin: 1em 0;
+  }
+
+  .lowest {
+    margin-left: .3em;
+    color: rgb(199, 199, 199);
+  }
+}
