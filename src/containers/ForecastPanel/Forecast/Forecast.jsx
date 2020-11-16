@@ -10,22 +10,22 @@ import {
 import "./Forecast.scss";
 
 const icons = {
-  rainy: faCloudShowersHeavy,
-  sunny: faSun,
-  cloudy: faCloudSun,
-  snowy: faSnowflake
+  Rain: faCloudShowersHeavy,
+  Clear: faSun,
+  Clouds: faCloudSun,
+  Snow: faSnowflake
 };
 
 function Forecast(props) {
   return (
     <div className={"forecast " + (props.active ? "active " : null)}>
-      <span className="day">Monday</span>
+      <span className="day">{props.day}</span>
       <div className="icons">
         <FontAwesomeIcon icon={icons[props.type]} size="3x" />
       </div>
       <div className="temp">
-        <span className="highest">6°</span>
-        <span className="lowest">1°</span>
+        <span className="highest">{props.highest}°</span>
+        <span className="lowest">{props.lowest}°</span>
       </div>
     </div>
   );
