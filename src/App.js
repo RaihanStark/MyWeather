@@ -40,11 +40,7 @@ const AppBar = (props) => (
 );
 
 class App extends Component {
-  state = {
-    showSidebar: false
-  };
   render() {
-    const { showSidebar } = this.state;
     return (
       <Grommet theme={theme} full>
         <ResponsiveContext.Consumer>
@@ -52,56 +48,14 @@ class App extends Component {
             <Box fill>
               <AppBar>
                 <Heading level="3" margin="none">
-                  My App
+                  MyWeather
                 </Heading>
-                <Button
-                  icon={<Notification />}
-                  onClick={() =>
-                    this.setState({ showSidebar: !this.state.showSidebar })
-                  }
-                />
+                <Button icon={<Notification />} />
               </AppBar>
               <Box direction="row" flex overflow={{ horizontal: "hidden" }}>
                 <Box flex align="center" justify="center">
                   <ForecastPanel />
                 </Box>
-                {!showSidebar || size !== "small" ? (
-                  <Collapsible direction="horizontal" open={showSidebar}>
-                    <Box
-                      flex
-                      width="medium"
-                      background="light-2"
-                      elevation="small"
-                      align="center"
-                      justify="center"
-                    >
-                      sidebar
-                    </Box>
-                  </Collapsible>
-                ) : (
-                  <Layer>
-                    <Box
-                      background="light-2"
-                      tag="header"
-                      justify="end"
-                      align="center"
-                      direction="row"
-                    >
-                      <Button
-                        icon={<FormClose />}
-                        onClick={() => this.setState({ showSidebar: false })}
-                      />
-                    </Box>
-                    <Box
-                      fill
-                      background="light-2"
-                      align="center"
-                      justify="center"
-                    >
-                      sidebar
-                    </Box>
-                  </Layer>
-                )}
               </Box>
             </Box>
           )}
