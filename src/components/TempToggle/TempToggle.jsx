@@ -16,13 +16,24 @@ const Button = styled.div`
   font-size: 1.2em;
   font-weight: 500;
   text-align: center;
+  cursor: ${(props) => (props.active ? "default" : "pointer")};
 `;
 
 function TempToggle(props) {
   return (
     <Toggler>
-      <Button active={props.selected === "c" ? true : false}>°C</Button>
-      <Button active={props.selected === "f" ? true : false}>°F</Button>
+      <Button
+        active={props.selected === "c" ? true : false}
+        onClick={props.selected === "c" ? null : props.toggled}
+      >
+        °C
+      </Button>
+      <Button
+        active={props.selected === "f" ? true : false}
+        onClick={props.selected === "f" ? null : props.toggled}
+      >
+        °F
+      </Button>
     </Toggler>
   );
 }

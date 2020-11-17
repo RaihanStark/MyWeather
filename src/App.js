@@ -11,6 +11,7 @@ class App extends Component {
   state = {
     city: "jakarta",
     data: [],
+    units: "c",
   };
 
   DAYS = [
@@ -57,10 +58,18 @@ class App extends Component {
     });
   }
 
+  switchTempsUnit = () => {
+    let toggleTo = this.state.units === "c" ? "f" : "c";
+    this.setState({ units: toggleTo });
+  };
+
   render() {
     return (
       <Layout>
-        <TempToggle selected="c"></TempToggle>
+        <TempToggle
+          selected={this.state.units}
+          toggled={this.switchTempsUnit}
+        ></TempToggle>
         <ForecastPanel data={this.state.data} />
       </Layout>
     );
