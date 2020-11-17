@@ -60,8 +60,28 @@ class App extends Component {
 
   switchTempsUnit = () => {
     let toggleTo = this.state.units === "c" ? "f" : "c";
-    this.setState({ units: toggleTo });
+    console.log("convert to", toggleTo);
+
+    let data = this.state.data;
+    let convertedData = [];
+    for (const i of data) {
+      i.min = this.convertTempTo(toggleTo, i.min).toFixed(2);
+      i.max = this.convertTempTo(toggleTo, i.max).toFixed(2);
+      convertedData.push(i);
+    }
+
+    this.setState({ units: toggleTo, data: convertedData });
   };
+
+  convertTempTo(toggleTo, number) {
+    if (toggleTo === "c") {
+      // f to c
+      return ((number - 32) * 5) / 9;
+    } else if (toggleTo === "f") {
+      // c to f
+      return (number * 9) / 5 + 32;
+    }
+  }
 
   render() {
     return (
