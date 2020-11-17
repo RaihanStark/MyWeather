@@ -363,7 +363,7 @@ class App extends Component {
     return (
       <Layout
         changeCityHandler={this.changeCity}
-        city={this.state.city}
+        city={this.state.data.length > 1 ? this.state.city : null}
         country={this.state.country.toLowerCase()}
       >
         <this.Toggler>
