@@ -11,6 +11,16 @@ class ForecastPanel extends React.Component {
     temps: []
   };
 
+  Days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
   componentDidMount() {
     Axios.get(
       `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=metric`
@@ -23,11 +33,12 @@ class ForecastPanel extends React.Component {
         min_temp.push(i.main.temp_min);
         max_temp.push(i.main.temp_max);
         if ((index + 1) % 8 === 0) {
+          let day_num = new Date(i.dt_txt.split(" ")[0]).getDay();
           this.setState({
             temps: [
               ...this.state.temps,
               {
-                day: day,
+                day: this.Days[day_num],
                 weather: i.weather[0].main,
                 min: Math.min(...min_temp),
                 max: Math.max(...max_temp)
@@ -47,9 +58,7 @@ class ForecastPanel extends React.Component {
   render() {
     let data = <FontAwesomeIcon spin icon={faSync} size="3x" />;
     if (this.state.temps.length === 5) {
-      console.log("loaded");
       data = this.state.temps.map((el, i) => {
-        console.log(i.weather);
         return (
           <Forecast
             key={i}
