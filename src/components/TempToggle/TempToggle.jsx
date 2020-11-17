@@ -17,11 +17,12 @@ const Button = styled.div`
   font-weight: 500;
   text-align: center;
 `;
-function TempToggle() {
+
+function TempToggle(props) {
   return (
     <Toggler>
-      <Button active>°C</Button>
-      <Button>°F</Button>
+      <Button active={props.selected === "c" ? true : false}>°C</Button>
+      <Button active={props.selected === "f" ? true : false}>°F</Button>
     </Toggler>
   );
 }

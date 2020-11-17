@@ -7,7 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
 class ForecastPanel extends React.Component {
   render() {
-    let data = <FontAwesomeIcon spin icon={faSync} size="3x" />;
+    let data = (
+      <FontAwesomeIcon spin icon={faSync} className="mt-5" size="3x" />
+    );
     if (this.props.data.length === 5) {
       data = this.props.data.map((el, i) => {
         return (

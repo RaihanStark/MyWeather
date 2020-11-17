@@ -60,7 +60,7 @@ class App extends Component {
   render() {
     return (
       <Layout>
-        <TempToggle></TempToggle>
+        <TempToggle selected="c"></TempToggle>
         <ForecastPanel data={this.state.data} />
       </Layout>
     );
