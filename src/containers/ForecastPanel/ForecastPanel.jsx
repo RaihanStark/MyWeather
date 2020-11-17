@@ -8,7 +8,7 @@ import { faSync } from "@fortawesome/free-solid-svg-icons";
 class ForecastPanel extends React.Component {
   state = {
     city: "jakarta",
-    temps: []
+    temps: [],
   };
 
   Days = [
@@ -18,7 +18,7 @@ class ForecastPanel extends React.Component {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
 
   componentDidMount() {
@@ -38,12 +38,12 @@ class ForecastPanel extends React.Component {
             temps: [
               ...this.state.temps,
               {
-                day: this.Days[day_num],
+                day: this.Days[day_num].slice(0, 3),
                 weather: i.weather[0].main,
                 min: Math.min(...min_temp),
-                max: Math.max(...max_temp)
-              }
-            ]
+                max: Math.max(...max_temp),
+              },
+            ],
           });
 
           // reset data
