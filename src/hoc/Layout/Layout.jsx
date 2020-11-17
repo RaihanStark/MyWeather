@@ -12,7 +12,9 @@ function Layout(props) {
     <Container fluid>
       <Row noGutters>
         <Col md="2"></Col>
-        <DashboardCol md="10">{props.children}</DashboardCol>
+        <DashboardCol md="10" className="p-5">
+          {props.children}
+        </DashboardCol>
       </Row>
     </Container>
   );

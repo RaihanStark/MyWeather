@@ -1,19 +1,17 @@
 .forecast {
   text-align: center;
-  padding: 2.5em 2em;
+  padding: 1.5em 1.5em;
   background-color: white;
-  border-radius: 2em;
+  border-radius: 1em;
   font-weight: 500;
-  &.active {
-    border: rgb(202, 202, 202) solid 2px;
-  }
-
-  .day {
-    font-size: 1.4em;
-  }
+  font-size: 1em;
 
   .icons {
-    margin: 1.5em 0;
+    margin: 1em 0;
+  }
+
+  .temp {
+    font-size: 0.8em;
   }
 
   .lowest {
