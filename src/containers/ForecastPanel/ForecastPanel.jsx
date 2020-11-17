@@ -34,6 +34,10 @@ class ForecastPanel extends React.Component {
               }
             ]
           });
+
+          // reset data
+          min_temp = [];
+          max_temp = [];
           day++;
         }
       }

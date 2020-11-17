@@ -6,7 +6,10 @@ import {
   Heading,
   Grommet,
   Layer,
-  ResponsiveContext
+  ResponsiveContext,
+  Footer,
+  Anchor,
+  Text
 } from "grommet";
 import { FormClose, Notification } from "grommet-icons";
 
