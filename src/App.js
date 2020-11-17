@@ -5,6 +5,8 @@ import Layout from "./hoc/Layout/Layout";
 import Axios from "axios";
 import "./entry.scss";
 
+import TempToggle from "./components/TempToggle/TempToggle";
+
 class App extends Component {
   state = {
     city: "jakarta",
@@ -58,6 +60,7 @@ class App extends Component {
   render() {
     return (
       <Layout>
+        <TempToggle></TempToggle>
         <ForecastPanel data={this.state.data} />
       </Layout>
     );

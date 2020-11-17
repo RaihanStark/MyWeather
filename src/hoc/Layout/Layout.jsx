@@ -9,14 +9,12 @@ const DashboardCol = styled(Col)`
 
 function Layout(props) {
   return (
-    <Container fluid>
-      <Row noGutters>
-        <Col md="3"></Col>
-        <DashboardCol md="9" className="p-5">
-          {props.children}
-        </DashboardCol>
-      </Row>
-    </Container>
+    <Row noGutters>
+      <Col md="3"></Col>
+      <DashboardCol md="9" className="p-5">
+        {props.children}
+      </DashboardCol>
+    </Row>
   );
 }
 

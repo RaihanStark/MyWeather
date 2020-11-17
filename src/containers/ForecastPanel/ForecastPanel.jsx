@@ -21,7 +21,7 @@ class ForecastPanel extends React.Component {
         );
       });
     }
-    return <div className="panel">{data}</div>;
+    return <div className="panel mt-5">{data}</div>;
   }
 }
 export default ForecastPanel;
