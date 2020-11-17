@@ -35,11 +35,17 @@ const LocateMe = styled.div`
   border-radius: 50%;
 `;
 
-function SearchEngine() {
+function SearchEngine(props) {
   return (
     <Container>
       <FontAwesomeIcon icon={faSearch} className="mr-3" size="md" />
-      <Input type="text" placeholder="Search for places . . ." />
+      <Input
+        onChange={(e) => {
+          props.handler(e.target.value);
+        }}
+        type="text"
+        placeholder="Search for places . . ."
+      />
       <LocateMe>
         <FontAwesomeIcon icon={faLocationArrow} />
       </LocateMe>

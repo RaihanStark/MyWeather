@@ -13,7 +13,7 @@ function Layout(props) {
   return (
     <Row noGutters>
       <Col md="3" className="p-5 mt-2">
-        <SearchEngine />
+        <SearchEngine handler={props.changeCityHandler} />
       </Col>
       <DashboardCol md="9" className="p-5">
         {props.children}
