@@ -40,28 +40,28 @@ class App extends Component {
   `;
 
   componentDidMount() {
+    this.updateWeather(this.state.city);
+  }
+
+  updateWeather = (city) => {
     Axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${this.state.city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=metric`
     ).then((res) => {
-      // console.log(res.data.list);
       let min_temp = [];
       let max_temp = [];
       let day = 1;
+
+      let data = [];
       for (const [index, i] of res.data.list.entries()) {
         min_temp.push(i.main.temp_min);
         max_temp.push(i.main.temp_max);
         if ((index + 1) % 8 === 0) {
           let day_num = new Date(i.dt_txt.split(" ")[0]).getDay();
-          this.setState({
-            data: [
-              ...this.state.data,
-              {
-                day: this.DAYS[day_num].slice(0, 3),
-                weather: i.weather[0].main,
-                min: Math.min(...min_temp),
-                max: Math.max(...max_temp),
-              },
-            ],
+          data.push({
+            day: this.DAYS[day_num].slice(0, 3),
+            weather: i.weather[0].main,
+            min: Math.min(...min_temp),
+            max: Math.max(...max_temp),
           });
 
           // reset data
@@ -69,9 +69,10 @@ class App extends Component {
           max_temp = [];
           day++;
         }
+        this.setState({ data: data });
       }
     });
-  }
+  };
 
   switchTempsUnit = () => {
     let toggleTo = this.state.units === "c" ? "f" : "c";
@@ -98,9 +99,14 @@ class App extends Component {
     }
   }
 
+  changeCity = (city_target) => {
+    this.setState({ city: city_target, data: [] });
+    this.updateWeather(city_target);
+  };
+
   render() {
     return (
-      <Layout>
+      <Layout changeCityHandler={this.changeCity}>
         <this.Toggler>
           <div className="d-flex">
             <this.TextLink>Today</this.TextLink>
