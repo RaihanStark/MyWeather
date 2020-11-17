@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-const Toggler = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
 const Button = styled.div`
   background-color: ${(props) => (props.active ? "#1e1714" : "white")};
   color: ${(props) => (props.active ? "white" : "#1e1714")};
@@ -21,7 +16,7 @@ const Button = styled.div`
 
 function TempToggle(props) {
   return (
-    <Toggler>
+    <React.Fragment>
       <Button
         active={props.selected === "c" ? true : false}
         onClick={props.selected === "c" ? null : props.toggled}
@@ -34,7 +29,7 @@ function TempToggle(props) {
       >
         °F
       </Button>
-    </Toggler>
+    </React.Fragment>
   );
 }
 

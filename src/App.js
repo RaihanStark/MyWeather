@@ -7,6 +7,8 @@ import "./entry.scss";
 
 import TempToggle from "./components/TempToggle/TempToggle";
 
+import styled from "styled-components";
+
 class App extends Component {
   state = {
     city: "jakarta",
@@ -23,6 +25,19 @@ class App extends Component {
     "Friday",
     "Saturday",
   ];
+
+  Toggler = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `;
+
+  TextLink = styled.div`
+    color: ${(props) => (props.active ? "black" : "#a4a6ac")};
+    font-size: 1.3em;
+    font-weight: 600;
+    border-bottom: ${(props) => (props.active ? "black solid 2px" : "none")};
+  `;
 
   componentDidMount() {
     Axios.get(
@@ -86,10 +101,22 @@ class App extends Component {
   render() {
     return (
       <Layout>
-        <TempToggle
-          selected={this.state.units}
-          toggled={this.switchTempsUnit}
-        ></TempToggle>
+        <this.Toggler>
+          <div className="d-flex">
+            <this.TextLink>Today</this.TextLink>
+            <this.TextLink className="ml-4" active>
+              Week
+            </this.TextLink>
+          </div>
+
+          <div className="d-flex">
+            <TempToggle
+              selected={this.state.units}
+              toggled={this.switchTempsUnit}
+            ></TempToggle>
+          </div>
+        </this.Toggler>
+
         <ForecastPanel data={this.state.data} />
       </Layout>
     );
