@@ -26,26 +26,30 @@ class App extends Component {
     "Saturday",
   ];
 
+  getApiUrl = (city, type, lat = null, long = null) => {
+    if (lat != null && long != null) {
+      return `https://api.openweathermap.org/data/2.5/${type}?lat=${lat}&lon=${long}&appid=64d076ca6ef5b81f2af42f681f245c17&units=${
+        this.state.units === "c" ? "metric" : "imperial"
+      }`;
+    }
+    return `https://api.openweathermap.org/data/2.5/${type}?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=${
+      this.state.units === "c" ? "metric" : "imperial"
+    }`;
+  };
+
   componentDidMount() {
+    // this.getLocation();
     this.updateWeather(this.state.city);
   }
 
-  updateWeather = (city) => {
+  updateWeather = (city, lat = null, long = null) => {
     // Get Current
-    Axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=${
-        this.state.units === "c" ? "metric" : "imperial"
-      }`
-    ).then((res) => {
+    Axios.get(this.getApiUrl(city, "weather", lat, long)).then((res) => {
       this.setState({ today_data: res.data });
     });
 
     // Get Forecast
-    Axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=${
-        this.state.units === "c" ? "metric" : "imperial"
-      }`
-    ).then((res) => {
+    Axios.get(this.getApiUrl(city, "forecast", lat, long)).then((res) => {
       let min_temp = [];
       let max_temp = [];
       let day = 1;
@@ -117,6 +121,21 @@ class App extends Component {
     this.updateWeather(city_target);
   };
 
+  getLocation = () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log();
+        this.updateWeather(
+          this.state.city,
+          position.coords.latitude,
+          position.coords.longitude
+        );
+      });
+    } else {
+      return null;
+    }
+  };
+
   render() {
     return (
       // Sidebar Inside Layout
@@ -124,6 +143,7 @@ class App extends Component {
         changeCityHandler={this.changeCity}
         city={this.state.data.length > 1 ? this.state.city : null}
         today_data={this.state.today_data}
+        locateHandler={this.getLocation}
       >
         {/* Dashboard */}
         <Header units={this.state.units} toggled={this.switchTempsUnit} />

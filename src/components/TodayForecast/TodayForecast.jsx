@@ -54,7 +54,6 @@ function TodayForecast(props) {
         {props.data.dt}
       </Moment>
     );
-    console.log(props.data);
     type = props.data.weather[0].icon;
     desc = props.data.weather[0].description.capitalize();
     temp = parseInt(props.data.main.temp);

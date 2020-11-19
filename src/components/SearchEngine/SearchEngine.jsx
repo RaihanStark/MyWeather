@@ -33,6 +33,8 @@ const LocateMe = styled.div`
   width: 35px;
   height: 35px;
   border-radius: 50%;
+
+  cursor: pointer;
 `;
 
 function SearchEngine(props) {
@@ -66,7 +68,11 @@ function SearchEngine(props) {
         type="text"
         placeholder="Search for places . . ."
       />
-      <LocateMe>
+      <LocateMe
+        onClick={() => {
+          props.locateHandler();
+        }}
+      >
         <FontAwesomeIcon icon={faLocationArrow} />
       </LocateMe>
     </Container>

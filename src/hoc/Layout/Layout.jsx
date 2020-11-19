@@ -15,7 +15,10 @@ function Layout(props) {
     <Row noGutters>
       {/* Side Bar */}
       <Col md="3" className="p-5 mt-2">
-        <SearchEngine handler={props.changeCityHandler} />
+        <SearchEngine
+          handler={props.changeCityHandler}
+          locateHandler={props.locateHandler}
+        />
         <TodayForecast data={props.today_data} />
       </Col>
       {/* Dashboard */}
