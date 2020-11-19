@@ -22,6 +22,14 @@ const TodayMetric = styled.div`
   font-weight: 600;
   margin-left: 13px;
 `;
+
+const Date = styled.div`
+  font-size: 1.5em;
+`;
+
+const Time = styled.span`
+  font-family: "Open Sans";
+`;
 const icons = {
   Rain: faCloudShowersHeavy,
   Clear: faSun,
@@ -48,6 +56,22 @@ function TodayForecast(props) {
       <div className="d-flex">
         <TodayTemps>{temp}</TodayTemps>
         <TodayMetric>°C</TodayMetric>
+      </div>
+      <Date>
+        <span>Monday, </span>
+        <Time>16:00</Time>
+      </Date>
+      <hr className="my-5" />
+
+      <div>
+        <div className="d-flex">
+          <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
+          <div className="ml-3 my-3">Mostly Cloudly</div>
+        </div>
+        <div className="d-flex">
+          <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
+          <div className="ml-3 my-3">Rain - 30%</div>
+        </div>
       </div>
     </div>
   );
