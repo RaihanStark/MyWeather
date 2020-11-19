@@ -26,19 +26,27 @@ const icons = {
   Rain: faCloudShowersHeavy,
   Clear: faSun,
   Clouds: faCloudSun,
+  Haze: faCloudSun,
   Snow: faSnowflake,
 };
 
-function TodayForecast() {
+function TodayForecast(props) {
+  let temp = "-";
+  let type = null;
+  if (props.data.main != undefined) {
+    console.log(props.data);
+    type = props.data.weather[0].main;
+    temp = parseInt(props.data.main.temp);
+  }
   return (
     <div className="">
       <FontAwesomeIcon
-        icon={icons.Clear}
+        icon={icons[type]}
         className="mt-5"
         style={{ fontSize: "14em" }}
       />
       <div className="d-flex">
-        <TodayTemps>12</TodayTemps>
+        <TodayTemps>{temp}</TodayTemps>
         <TodayMetric>°C</TodayMetric>
       </div>
     </div>

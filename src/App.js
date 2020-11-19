@@ -13,6 +13,7 @@ class App extends Component {
   state = {
     city: "jakarta",
     data: [],
+    today_data: {},
     units: "c",
     country: "",
   };
@@ -45,6 +46,14 @@ class App extends Component {
   }
 
   updateWeather = (city) => {
+    // Get Current
+    Axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=metric`
+    ).then((res) => {
+      this.setState({ today_data: res.data });
+    });
+
+    // Get Forecast
     Axios.get(
       `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=metric`
     ).then((res) => {
@@ -365,6 +374,7 @@ class App extends Component {
         changeCityHandler={this.changeCity}
         city={this.state.data.length > 1 ? this.state.city : null}
         country={this.state.country.toLowerCase()}
+        today_data={this.state.today_data}
       >
         <this.Toggler>
           <div className="d-flex">

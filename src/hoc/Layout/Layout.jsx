@@ -16,7 +16,7 @@ function Layout(props) {
     <Row noGutters>
       <Col md="3" className="p-5 mt-2">
         <SearchEngine handler={props.changeCityHandler} />
-        <TodayForecast />
+        <TodayForecast data={props.today_data} />
         <CountryDisplay city={props.city} country={props.country} />
       </Col>
       <DashboardCol md="9" className="p-5">
