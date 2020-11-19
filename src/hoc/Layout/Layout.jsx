@@ -19,7 +19,7 @@ function Layout(props) {
         <TodayForecast data={props.today_data} />
       </Col>
       {/* Dashboard */}
-      <DashboardCol md="9" className="p-5">
+      <DashboardCol md="9" style={{ padding: "3rem 4rem" }}>
         {props.children}
       </DashboardCol>
     </Row>
