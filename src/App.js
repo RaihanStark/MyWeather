@@ -57,7 +57,7 @@ class App extends Component {
           let day_num = new Date(i.dt_txt.split(" ")[0]).getDay();
           data.push({
             day: this.DAYS[day_num].slice(0, 3),
-            weather: i.weather[0].main,
+            weather: i.weather[0].icon,
             min: Math.min(...min_temp),
             max: Math.max(...max_temp),
           });

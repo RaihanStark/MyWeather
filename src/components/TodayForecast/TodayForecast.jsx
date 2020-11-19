@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import Moment from "react-moment";
+import getIcon from "../../icons";
 
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
@@ -54,17 +55,13 @@ function TodayForecast(props) {
       </Moment>
     );
     console.log(props.data);
-    type = props.data.weather[0].main;
+    type = props.data.weather[0].icon;
     desc = props.data.weather[0].description.capitalize();
     temp = parseInt(props.data.main.temp);
   }
   return (
     <div className="">
-      <FontAwesomeIcon
-        icon={icons[type]}
-        className="mt-5"
-        style={{ fontSize: "14em" }}
-      />
+      <img src={getIcon(type)} width="312px" className="mt-5" />
       <div className="d-flex">
         <TodayTemps>{temp}</TodayTemps>
         <TodayMetric>°C</TodayMetric>
@@ -76,11 +73,11 @@ function TodayForecast(props) {
       <hr className="my-5" />
 
       <div className="d-flex">
-        <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
+        <img src={getIcon(type)} width="32px" />
         <div className="ml-3 my-3">{desc}</div>
       </div>
       <div className="d-flex">
-        <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
+        <img src={getIcon("location")} width="32px" />
         <div className="ml-3 my-3">
           <span>{country}</span>
         </div>

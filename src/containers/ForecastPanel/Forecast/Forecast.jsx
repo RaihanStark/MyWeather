@@ -6,7 +6,7 @@ import {
   faSnowflake,
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
-
+import getIcon from "../../../icons";
 import "./Forecast.scss";
 
 const icons = {
@@ -21,7 +21,7 @@ function Forecast(props) {
     <div className={"forecast " + (props.today ? "today " : null)}>
       <span className="day">{props.day}</span>
       <div className="icons">
-        <FontAwesomeIcon icon={icons[props.type]} size="3x" />
+        <img src={getIcon(props.type)} width="64px" />
       </div>
       <div className="temp">
         <span className="highest">{props.highest}°</span>
