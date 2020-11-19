@@ -7,6 +7,7 @@ import {
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import Moment from "react-moment";
 
 const TodayTemps = styled.div`
   font-family: "Open Sans", sans-serif;
@@ -27,9 +28,6 @@ const Date = styled.div`
   font-size: 1.5em;
 `;
 
-const Time = styled.span`
-  font-family: "Open Sans";
-`;
 const icons = {
   Rain: faCloudShowersHeavy,
   Clear: faSun,
@@ -41,8 +39,15 @@ const icons = {
 function TodayForecast(props) {
   let temp = "-";
   let type = null;
+  let dt = null;
+  let country = null;
   if (props.data.main != undefined) {
-    console.log(props.data);
+    country = `${props.data.name}, ${props.data.sys.country}`;
+    dt = (
+      <Moment unix format="dddd, LT">
+        {props.data.dt}
+      </Moment>
+    );
     type = props.data.weather[0].main;
     temp = parseInt(props.data.main.temp);
   }
@@ -58,8 +63,9 @@ function TodayForecast(props) {
         <TodayMetric>°C</TodayMetric>
       </div>
       <Date>
-        <span>Monday, </span>
-        <Time>16:00</Time>
+        {dt}
+        <br />
+        <span style={{ fontSize: ".8em" }}>{country}</span>
       </Date>
       <hr className="my-5" />
 
