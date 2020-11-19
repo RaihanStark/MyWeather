@@ -75,16 +75,14 @@ function TodayForecast(props) {
       </Date>
       <hr className="my-5" />
 
-      <div>
-        <div className="d-flex">
-          <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
-          <div className="ml-3 my-3">{desc}</div>
-        </div>
-        <div className="d-flex">
-          <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
-          <div className="ml-3 my-3">
-            <span>{country}</span>
-          </div>
+      <div className="d-flex">
+        <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
+        <div className="ml-3 my-3">{desc}</div>
+      </div>
+      <div className="d-flex">
+        <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
+        <div className="ml-3 my-3">
+          <span>{country}</span>
         </div>
       </div>
     </div>

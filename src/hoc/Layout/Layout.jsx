@@ -13,10 +13,12 @@ const DashboardCol = styled(Col)`
 function Layout(props) {
   return (
     <Row noGutters>
+      {/* Side Bar */}
       <Col md="3" className="p-5 mt-2">
         <SearchEngine handler={props.changeCityHandler} />
         <TodayForecast data={props.today_data} />
       </Col>
+      {/* Dashboard */}
       <DashboardCol md="9" className="p-5">
         {props.children}
       </DashboardCol>

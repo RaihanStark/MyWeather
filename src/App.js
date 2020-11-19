@@ -5,8 +5,7 @@ import Layout from "./hoc/Layout/Layout";
 import Axios from "axios";
 import "./entry.scss";
 
-import TempToggle from "./components/TempToggle/TempToggle";
-
+import Header from "./components/Header/Header";
 import styled from "styled-components";
 
 class App extends Component {
@@ -26,19 +25,6 @@ class App extends Component {
     "Friday",
     "Saturday",
   ];
-
-  Toggler = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  `;
-
-  TextLink = styled.div`
-    color: ${(props) => (props.active ? "black" : "#a4a6ac")};
-    font-size: 1.3em;
-    font-weight: 600;
-    border-bottom: ${(props) => (props.active ? "black solid 2px" : "none")};
-  `;
 
   componentDidMount() {
     this.updateWeather(this.state.city);
@@ -87,7 +73,6 @@ class App extends Component {
 
   switchTempsUnit = () => {
     let toggleTo = this.state.units === "c" ? "f" : "c";
-    console.log("convert to", toggleTo);
 
     let data = this.state.data;
     let convertedData = [];
@@ -117,27 +102,14 @@ class App extends Component {
 
   render() {
     return (
+      // Sidebar Inside Layout
       <Layout
         changeCityHandler={this.changeCity}
         city={this.state.data.length > 1 ? this.state.city : null}
         today_data={this.state.today_data}
       >
-        <this.Toggler>
-          <div className="d-flex">
-            <this.TextLink>Today</this.TextLink>
-            <this.TextLink className="ml-4" active>
-              Week
-            </this.TextLink>
-          </div>
-
-          <div className="d-flex">
-            <TempToggle
-              selected={this.state.units}
-              toggled={this.switchTempsUnit}
-            ></TempToggle>
-          </div>
-        </this.Toggler>
-
+        {/* Dashboard */}
+        <Header units={this.state.units} toggled={this.switchTempsUnit} />
         <ForecastPanel data={this.state.data} />
       </Layout>
     );
