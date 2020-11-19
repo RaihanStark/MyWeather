@@ -17,7 +17,7 @@ const TodayTemps = styled.div`
   font-family: "Open Sans", sans-serif;
 
   font-size: 7em;
-  letter-spacing: -13px;
+  letter-spacing: -5px;
 `;
 
 const TodayMetric = styled.div`

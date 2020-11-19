@@ -75,14 +75,26 @@ class App extends Component {
     let toggleTo = this.state.units === "c" ? "f" : "c";
 
     let data = this.state.data;
+    let today_data = this.state.today_data;
+
     let convertedData = [];
+    // convert forecast
     for (const i of data) {
       i.min = this.convertTempTo(toggleTo, i.min).toFixed(2);
       i.max = this.convertTempTo(toggleTo, i.max).toFixed(2);
       convertedData.push(i);
     }
 
-    this.setState({ units: toggleTo, data: convertedData });
+    // convert current day
+    today_data.main.temp = parseInt(
+      this.convertTempTo(toggleTo, today_data.main.temp)
+    );
+
+    this.setState({
+      units: toggleTo,
+      data: convertedData,
+      today_data: today_data,
+    });
   };
 
   convertTempTo(toggleTo, number) {
