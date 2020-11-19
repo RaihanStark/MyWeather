@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { faSearch, faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
@@ -36,12 +36,32 @@ const LocateMe = styled.div`
 `;
 
 function SearchEngine(props) {
+  const [search, setsearch] = useState({
+    name: "",
+    typing: false,
+    typingTimeout: 0,
+  });
+
+  const changeSearch = (e) => {
+    let key = e.target.value;
+    if (search.typingTimeout) {
+      clearTimeout(search.typingTimeout);
+    }
+
+    setsearch({
+      name: key,
+      typing: false,
+      typingTimeout: setTimeout(() => {
+        props.handler(key);
+      }, 1000),
+    });
+  };
   return (
     <Container>
       <FontAwesomeIcon icon={faSearch} className="mr-3" size="md" />
       <Input
         onChange={(e) => {
-          props.handler(e.target.value);
+          changeSearch(e);
         }}
         type="text"
         placeholder="Search for places . . ."
