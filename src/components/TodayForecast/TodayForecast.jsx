@@ -9,6 +9,10 @@ import {
 import styled from "styled-components";
 import Moment from "react-moment";
 
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
 const TodayTemps = styled.div`
   font-family: "Open Sans", sans-serif;
 
@@ -39,6 +43,7 @@ const icons = {
 function TodayForecast(props) {
   let temp = "-";
   let type = null;
+  let desc = null;
   let dt = null;
   let country = null;
   if (props.data.main != undefined) {
@@ -48,7 +53,9 @@ function TodayForecast(props) {
         {props.data.dt}
       </Moment>
     );
+    console.log(props.data);
     type = props.data.weather[0].main;
+    desc = props.data.weather[0].description.capitalize();
     temp = parseInt(props.data.main.temp);
   }
   return (
@@ -65,18 +72,19 @@ function TodayForecast(props) {
       <Date>
         {dt}
         <br />
-        <span style={{ fontSize: ".8em" }}>{country}</span>
       </Date>
       <hr className="my-5" />
 
       <div>
         <div className="d-flex">
           <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
-          <div className="ml-3 my-3">Mostly Cloudly</div>
+          <div className="ml-3 my-3">{desc}</div>
         </div>
         <div className="d-flex">
           <FontAwesomeIcon icon={icons[type]} size="lg" className="my-3" />
-          <div className="ml-3 my-3">Rain - 30%</div>
+          <div className="ml-3 my-3">
+            <span>{country}</span>
+          </div>
         </div>
       </div>
     </div>
