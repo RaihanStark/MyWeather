@@ -33,14 +33,18 @@ class App extends Component {
   updateWeather = (city) => {
     // Get Current
     Axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=${
+        this.state.units === "c" ? "metric" : "imperial"
+      }`
     ).then((res) => {
       this.setState({ today_data: res.data });
     });
 
     // Get Forecast
     Axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=64d076ca6ef5b81f2af42f681f245c17&units=${
+        this.state.units === "c" ? "metric" : "imperial"
+      }`
     ).then((res) => {
       let min_temp = [];
       let max_temp = [];
@@ -86,9 +90,10 @@ class App extends Component {
     }
 
     // convert current day
-    today_data.main.temp = parseInt(
-      this.convertTempTo(toggleTo, today_data.main.temp)
-    );
+    today_data.main.temp = this.convertTempTo(
+      toggleTo,
+      today_data.main.temp
+    ).toFixed(2);
 
     this.setState({
       units: toggleTo,
