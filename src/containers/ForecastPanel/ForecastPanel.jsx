@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import Forecast from "./Forecast/Forecast";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

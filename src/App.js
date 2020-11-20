@@ -6,7 +6,6 @@ import Axios from "axios";
 import "./entry.scss";
 
 import Header from "./components/Header/Header";
-import styled from "styled-components";
 
 class App extends Component {
   state = {
@@ -69,7 +68,7 @@ class App extends Component {
           // reset data
           min_temp = [];
           max_temp = [];
-          day++;
+          day = day + 1;
         }
         this.setState({
           data: data,

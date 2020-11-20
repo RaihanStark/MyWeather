@@ -1,12 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCloudShowersHeavy,
-  faCloudSun,
-  faSnowflake,
-  faSun,
-} from "@fortawesome/free-solid-svg-icons";
-
 import styled from "styled-components";
 import getIcon from "../../../icons";
 
@@ -37,7 +29,7 @@ function Forecast(props) {
     <ForecastItem className="mb-4">
       <span className="day">{props.day}</span>
       <div className="icons">
-        <img src={getIcon(props.type)} width="64px" />
+        <img src={getIcon(props.type)} alt="weather icon" width="64px" />
       </div>
       <div className="temp">
         <span className="highest">{props.highest}°</span>

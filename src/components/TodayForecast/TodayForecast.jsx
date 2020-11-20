@@ -1,15 +1,9 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCloudShowersHeavy,
-  faCloudSun,
-  faSnowflake,
-  faSun,
-} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import Moment from "react-moment";
 import getIcon from "../../icons";
 
+// eslint-disable-next-line
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
@@ -65,7 +59,7 @@ function TodayForecast(props) {
   let desc = null;
   let dt = null;
   let country = null;
-  if (props.data.main != undefined) {
+  if (props.data.main !== undefined) {
     country = `${props.data.name}, ${props.data.sys.country}`;
     dt = (
       <Moment unix format="dddd, LT">
