@@ -1,6 +1,8 @@
 import React from "react";
 
 import TempToggle from "../TempToggle/TempToggle";
+import { TextHeader } from "../styled";
+
 import styled from "styled-components";
 
 const Toggler = styled.div`
@@ -13,20 +15,14 @@ const Toggler = styled.div`
   }
 `;
 
-const TextLink = styled.div`
-  color: ${(props) => (props.active ? "black" : "#a4a6ac")};
-  font-size: 1.3em;
-  font-weight: 600;
-  border-bottom: ${(props) => (props.active ? "black solid 2px" : "none")};
-`;
 function Header(props) {
   return (
     <Toggler>
       <div className="d-flex mb-4 mb-sm-0">
-        <TextLink>Today</TextLink>
-        <TextLink className="ml-4" active>
+        <TextHeader>Today</TextHeader>
+        <TextHeader className="ml-4" active underline>
           Week
-        </TextLink>
+        </TextHeader>
       </div>
 
       <div className="d-flex">

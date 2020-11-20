@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 import ForecastPanel from "./containers/ForecastPanel/ForecastPanel";
+import DetailedWeather from "./components/DetailedWeather/DetailedWeather";
+
 import Layout from "./hoc/Layout/Layout";
 import Axios from "axios";
 import "./entry.scss";
@@ -147,6 +149,7 @@ class App extends Component {
         {/* Dashboard */}
         <Header units={this.state.units} toggled={this.switchTempsUnit} />
         <ForecastPanel data={this.state.data} />
+        <DetailedWeather />
       </Layout>
     );
   }
