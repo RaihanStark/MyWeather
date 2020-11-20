@@ -14,26 +14,32 @@ String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-const ForecastWrapper = styled.div`
-  #today_temp {
-    font-family: "Open Sans", sans-serif;
+const TodayTemps = styled.div`
+  font-family: "Open Sans", sans-serif;
 
-    font-size: 7em;
-    letter-spacing: -5px;
-  }
-
-  #today_metric {
-    font-family: "Open Sans", sans-serif;
-    font-size: 3em;
-    margin-top: 0.5em;
-    font-weight: 600;
-    margin-left: 13px;
-  }
-
-  #date {
-    font-size: 1.5em;
-  }
+  font-size: 7em;
+  letter-spacing: -5px;
 `;
+
+const TodayMetric = styled.div`
+  font-family: "Open Sans", sans-serif;
+  font-size: 3em;
+  margin-top: 0.5em;
+  font-weight: 600;
+  margin-left: 13px;
+`;
+
+const Date = styled.div`
+  font-size: 1.5em;
+`;
+
+const icons = {
+  Rain: faCloudShowersHeavy,
+  Clear: faSun,
+  Clouds: faCloudSun,
+  Haze: faCloudSun,
+  Snow: faSnowflake,
+};
 
 function TodayForecast(props) {
   let temp = "-";
@@ -53,16 +59,16 @@ function TodayForecast(props) {
     temp = parseInt(props.data.main.temp);
   }
   return (
-    <ForecastWrapper>
+    <div className="">
       <img src={getIcon(type)} width="312px" className="mt-5" />
       <div className="d-flex">
-        <div id="today_temp">{temp}</div>
-        <div id="today_metric">°C</div>
+        <TodayTemps>{temp}</TodayTemps>
+        <TodayMetric>°C</TodayMetric>
       </div>
-      <div id="date">
+      <Date>
         {dt}
         <br />
-      </div>
+      </Date>
       <hr className="my-5" />
 
       <div className="d-flex">
@@ -75,7 +81,7 @@ function TodayForecast(props) {
           <span>{country}</span>
         </div>
       </div>
-    </ForecastWrapper>
+    </div>
   );
 }
 

@@ -6,7 +6,7 @@ import SearchEngine from "../../components/SearchEngine/SearchEngine";
 
 import TodayForecast from "../../components/TodayForecast/TodayForecast";
 const DashboardCol = styled(Col)`
-  background-color: #f6f6f7;
+  background-color: ${({ theme }) => theme.colors.grey};
   height: 100vh;
 `;
 
