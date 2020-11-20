@@ -1,6 +1,6 @@
 import React from "react";
 import "./ForecastPanel.scss";
-
+import { Container, Row, Col } from "reactstrap";
 import Forecast from "./Forecast/Forecast";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,17 +13,19 @@ class ForecastPanel extends React.Component {
     if (this.props.data.length === 5) {
       data = this.props.data.map((el, i) => {
         return (
-          <Forecast
-            key={i}
-            day={el.day}
-            type={el.weather}
-            highest={el.max}
-            lowest={el.min}
-          />
+          <Col>
+            <Forecast
+              key={i}
+              day={el.day}
+              type={el.weather}
+              highest={el.max}
+              lowest={el.min}
+            />
+          </Col>
         );
       });
     }
-    return <div className="panel mt-5">{data}</div>;
+    return <div className="row panel mt-5">{data}</div>;
   }
 }
 export default ForecastPanel;
