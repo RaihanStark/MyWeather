@@ -1,5 +1,4 @@
 import React from "react";
-import "./ForecastPanel.scss";
 import { Container, Row, Col } from "reactstrap";
 import Forecast from "./Forecast/Forecast";
 
@@ -25,7 +24,7 @@ class ForecastPanel extends React.Component {
         );
       });
     }
-    return <div className="row panel mt-5">{data}</div>;
+    return <Row className="mt-5">{data}</Row>;
   }
 }
 export default ForecastPanel;

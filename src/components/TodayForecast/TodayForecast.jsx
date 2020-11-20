@@ -19,6 +19,10 @@ const TodayTemps = styled.div`
 
   font-size: 7em;
   letter-spacing: -5px;
+
+  @media ${({ theme }) => theme.MediaQueries.xs} {
+    font-size: 5em;
+  }
 `;
 
 const TodayMetric = styled.div`
@@ -27,19 +31,23 @@ const TodayMetric = styled.div`
   margin-top: 0.5em;
   font-weight: 600;
   margin-left: 13px;
+
+  @media ${({ theme }) => theme.MediaQueries.xs} {
+    font-size: 2.3em;
+  }
 `;
 
 const Date = styled.div`
   font-size: 1.5em;
+
+  @media ${({ theme }) => theme.MediaQueries.xs} {
+    font-size: 1em;
+  }
 `;
 
-const icons = {
-  Rain: faCloudShowersHeavy,
-  Clear: faSun,
-  Clouds: faCloudSun,
-  Haze: faCloudSun,
-  Snow: faSnowflake,
-};
+const Icon = styled.img`
+  max-width: 312px;
+`;
 
 function TodayForecast(props) {
   let temp = "-";
@@ -58,9 +66,10 @@ function TodayForecast(props) {
     desc = props.data.weather[0].description.capitalize();
     temp = parseInt(props.data.main.temp);
   }
+
   return (
-    <div className="">
-      <img src={getIcon(type)} width="312px" className="mt-5" />
+    <div className="pl-2 mb-5">
+      <Icon src={getIcon(type)} className="mt-5" />
       <div className="d-flex">
         <TodayTemps>{temp}</TodayTemps>
         <TodayMetric>°C</TodayMetric>
@@ -72,11 +81,11 @@ function TodayForecast(props) {
       <hr className="my-5" />
 
       <div className="d-flex">
-        <img src={getIcon(type)} width="32px" />
+        <Icon src={getIcon(type)} width="32px" />
         <div className="ml-3 my-3">{desc}</div>
       </div>
       <div className="d-flex">
-        <img src={getIcon("location")} width="32px" />
+        <Icon src={getIcon("location")} width="32px" />
         <div className="ml-3 my-3">
           <span>{country}</span>
         </div>

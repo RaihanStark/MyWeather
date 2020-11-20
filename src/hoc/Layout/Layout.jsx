@@ -7,14 +7,14 @@ import SearchEngine from "../../components/SearchEngine/SearchEngine";
 import TodayForecast from "../../components/TodayForecast/TodayForecast";
 const DashboardCol = styled(Col)`
   background-color: ${({ theme }) => theme.colors.grey};
-  height: 100vh;
+  height: auto !important;
 `;
 
 function Layout(props) {
   return (
     <Row noGutters>
       {/* Side Bar */}
-      <Col md="3" className="p-5 mt-2">
+      <Col lg="3" className="p-4 p-sm-5 mt-2">
         <SearchEngine
           handler={props.changeCityHandler}
           locateHandler={props.locateHandler}

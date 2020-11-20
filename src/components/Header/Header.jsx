@@ -7,6 +7,10 @@ const Toggler = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media ${({ theme }) => theme.MediaQueries.xs} {
+    flex-direction: column;
+  }
 `;
 
 const TextLink = styled.div`
@@ -18,7 +22,7 @@ const TextLink = styled.div`
 function Header(props) {
   return (
     <Toggler>
-      <div className="d-flex">
+      <div className="d-flex mb-4 mb-sm-0">
         <TextLink>Today</TextLink>
         <TextLink className="ml-4" active>
           Week
