@@ -23,6 +23,10 @@ const TodayTemps = styled.div`
   @media ${({ theme }) => theme.MediaQueries.xs} {
     font-size: 5em;
   }
+
+  @media ${({ theme }) => theme.MediaQueries.lg} {
+    font-size: 6em;
+  }
 `;
 
 const TodayMetric = styled.div`
@@ -35,6 +39,9 @@ const TodayMetric = styled.div`
   @media ${({ theme }) => theme.MediaQueries.xs} {
     font-size: 2.3em;
   }
+  @media ${({ theme }) => theme.MediaQueries.lg} {
+    font-size: 2.6em;
+  }
 `;
 
 const Date = styled.div`
@@ -42,6 +49,9 @@ const Date = styled.div`
 
   @media ${({ theme }) => theme.MediaQueries.xs} {
     font-size: 1em;
+  }
+  @media ${({ theme }) => theme.MediaQueries.lg} {
+    font-size: 1.3em;
   }
 `;
 

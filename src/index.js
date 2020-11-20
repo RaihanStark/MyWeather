@@ -5,11 +5,12 @@ import * as serviceWorker from "./serviceWorker";
 
 import theme from "./theme/theme.js";
 import { ThemeProvider } from "styled-components";
-
+import GlobalStyle from "./theme/globalStyles";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
+    <GlobalStyle />
     <App />
   </ThemeProvider>,
   document.getElementById("root")

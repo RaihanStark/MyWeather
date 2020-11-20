@@ -12,9 +12,9 @@ const DashboardCol = styled(Col)`
 
 function Layout(props) {
   return (
-    <Row noGutters>
+    <Row noGutters className="h-100">
       {/* Side Bar */}
-      <Col lg="3" className="p-4 p-sm-5 mt-2">
+      <Col lg="4" xl="3" className="p-4 p-sm-5 mt-2">
         <SearchEngine
           handler={props.changeCityHandler}
           locateHandler={props.locateHandler}
@@ -22,7 +22,7 @@ function Layout(props) {
         <TodayForecast data={props.today_data} />
       </Col>
       {/* Dashboard */}
-      <DashboardCol md="9" style={{ padding: "3rem 4rem" }}>
+      <DashboardCol lg="8" xl="9" style={{ padding: "3rem 4rem" }}>
         {props.children}
       </DashboardCol>
     </Row>
