@@ -1,6 +1,7 @@
 export default {
   colors: {
     grey: "#f6f6f7;",
+    darkgrey: "#A4A6AC",
   },
   MediaQueries: {
     xs: "(max-width: 575.98px)",

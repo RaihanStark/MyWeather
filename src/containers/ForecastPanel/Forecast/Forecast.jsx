@@ -2,40 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import getIcon from "../../../icons";
 
-const ForecastItem = styled.div`
-  text-align: center;
-  padding: 1.5em 1.5em;
-  background-color: white;
-  border-radius: 1em;
-  font-weight: 500;
-  font-size: 1em;
+import { StyledCard } from "../../../components/styled";
+import { Card, CardBody, CardSubtitle } from "reactstrap";
 
-  .icons {
-    margin: 1em 0;
-  }
-
-  .temp {
-    font-size: 0.8em;
-  }
-
-  .lowest {
-    margin-left: 0.3em;
-    color: rgb(199, 199, 199);
-  }
+const Temp = styled.div`
+  font-size: 0.8em;
 `;
 
 function Forecast(props) {
   return (
-    <ForecastItem className="mb-4">
-      <span className="day">{props.day}</span>
-      <div className="icons">
-        <img src={getIcon(props.type)} alt="weather icon" width="64px" />
-      </div>
-      <div className="temp">
+    <StyledCard temp className="mb-4">
+      <CardSubtitle tag="h6" className="mb-2">
+        {props.day}
+      </CardSubtitle>
+      <img src={getIcon(props.type)} alt="weather icon" width="64px" />
+      <Temp>
         <span className="highest">{props.highest}°</span>
         <span className="lowest">{props.lowest}°</span>
-      </div>
-    </ForecastItem>
+      </Temp>
+    </StyledCard>
   );
 }
 

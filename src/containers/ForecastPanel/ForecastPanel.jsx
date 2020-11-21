@@ -4,6 +4,7 @@ import Forecast from "./Forecast/Forecast";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
+
 class ForecastPanel extends React.Component {
   render() {
     let data = (
